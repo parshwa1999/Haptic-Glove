@@ -1,5 +1,3 @@
-//#include <Mouse.h>
-
 #include <Wire.h>
 #include <I2Cdev.h>
 #include <MPU6050.h>
@@ -44,6 +42,8 @@ void loop() {
   a1=ax;
   a2=az;
   delay(500);
+
+
 }
 
 
