@@ -92,7 +92,6 @@ void setup() {
 
 
 void loop() {
-    // if programming failed, don't try to do anything
     if (!dmpReady) return;
 
     // wait for MPU interrupt or extra packet(s) available
