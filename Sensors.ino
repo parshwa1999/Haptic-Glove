@@ -16,6 +16,7 @@ int leftButton;
 void setup() {
 	// To Initialize the Serial Bus for printing data.
 	Serial.begin(9600);
+	
 	/*
 	* To initiate the Wire library and join the I2C bus as a master or slave.
 	* This function should normally be called only once.
@@ -28,7 +29,6 @@ void setup() {
 	Wire.begin();
 	
 	//Buttons used for clicking
-	
 	pinMode(button1, INPUT);
 	pinMode(button2, INPUT);
 	pinMode(7, INPUT);
@@ -40,26 +40,32 @@ void setup() {
 	if (!mpu.testConnection()) { while (1); }
 }
 void loop() {
+
 	// Function used to get values of accelerometer and gyroscope in three directions.
 	mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
-	// Calculate velocities in X and Y directions
 
+	// Calculate velocities in X and Y directions
 	vx = (gx+15)/150;
 	vy = -(gz-100)/150;
+
 	// Read data from pin7 to check has user clicked
 	leftButton = digitalRead(7);
 	delay(100);
+
 	// Delay to stop switch Debouncing.
 	// Print data serially along X axis
 	Serial.print("X");
 	Serial.println(vx+4);
+
 	// added values to calibrate sensors value
 	delay(100);
+
 	//Delay kept for instructions not to be skipped
 	Serial.print("Y");
 
 	Serial.print(vy-1);
 	delay(100);
+
 	// added values to calibrate the sensors value
 	//Delay kept for instructions not to be skipped
 	// When Switch is pressed low voltage (low logic level) is passed
