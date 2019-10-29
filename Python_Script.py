@@ -49,7 +49,6 @@ try:
 	# Check is pointer clicked
 	if(str2[1] == 1):
 		pyautogui.click(pyautogui.position())
-     
 # Trying to catch an exception    
 except:
 	print('check')
